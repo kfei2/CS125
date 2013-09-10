@@ -3,7 +3,7 @@
  * A program to test students' CS knowledge.
  * Watch out ! There may be deliberate bugs in some of the logic below :-)
  * @see QuizMaster-ReadMe.txt for details on how to complete this program.
- * @author insert-your-netid-here
+ * @author yangli15
  *
  */
 public class QuizMaster {
@@ -37,9 +37,10 @@ public class QuizMaster {
 		/* Computer score: + 10 points for each correct answer */
 		if(gridComputing==1) score = score + 10;
 		if(illiac==1) score = score + 10;
+		if(mosaic==1) score = score + 10;
 		if(varTF==1) score = score + 10;
 		/* Michigan students (zip code 48xxx) need to get all of them correct to receive any points */
-		if(zip/1000 == 48) score =0;
+		if(zip/1000 == 48 && score != 40) score =0;
 		
 		/* If an Illinois student gets all questions correct print congratulations */
 		if(score == 40)
