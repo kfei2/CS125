@@ -11,12 +11,23 @@
 public class Factorial {
 	public static void main(String[] args) {
 		int max = 0;
+		int num = 0;
 		long total = 1;
-		System.out.println("Enter a number between 1 and 20 inclusive.");
+		
 		while (max < 1 || max >= 21)
+		{
+			System.out.println("Enter a number between 1 and 20 inclusive.");	
 			max = TextIO.getlnInt();
-		for(int i = 0; i < max; i++)
-			total *= i+1;
-		TextIO.putln(total);
+		}
+		
+		total = max;
+		num = max;
+		
+		while(max > 1)
+		{
+			total *= max-1;
+			max -= 1;
+		}
+		TextIO.putln(num + "! = " + total);
 	}
 }
