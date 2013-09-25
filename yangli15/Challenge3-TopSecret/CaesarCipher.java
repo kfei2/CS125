@@ -7,14 +7,81 @@
  * You'll need to read the Test cases to understand how your program should work.
  * Good Programming Hints: "DRY: Don't Repeat Yourself"
  * Try to make your program as short as possible.
- * TODO: add your netid to the line below
- * @author put-your-netid-here
+ * @author yangli15
  */
 public class CaesarCipher {
 
 	public static void main(String[] strings) {
-		//TODO: Delete the following line and write your implementation here- 
-		throw new RuntimeException ("Et tu Brutus?");
+		TextIO.putln("Please enter the shift value (between -25..-1 and 1..25)");
+		int shiftValue = TextIO.getlnInt();
+		if(shiftValue == 999 || shiftValue == -999)
+			TextIO.putln("Using position shift");
+		else
+		{
+			while((shiftValue == 0) ||(shiftValue > 25) || (shiftValue < -25))
+			{
+				TextIO.putln(shiftValue + " is not a valid shift value.");
+				TextIO.putln("Please enter the shift value (between -25..-1 and 1..25)");
+				shiftValue = TextIO.getlnInt();
+			}
+		
+			TextIO.putln("Using shift value of " + shiftValue);
+		}
+		
+		TextIO.putln("Please enter the source text (empty line to quit)");
+		String input = TextIO.getln();
+		String sourceText = input.toUpperCase();
+		if(shiftValue != 999 && shiftValue != -999)
+		{
+			while(!sourceText.equals(""))
+			{
+				TextIO.putln("Source   :" + input);
+				TextIO.put("Processed:");
+				
+				for(int i = 0; i < sourceText.length(); i++)
+				{
+					char c = sourceText.charAt(i);
+					
+					if(c >= 'A' && c <= 'Z')
+					{
+						int letter = c - 'A';
+						int encrypted = (letter + shiftValue) % 26;
+						if(encrypted < 0)
+							encrypted += 26;
+						c = (char)(encrypted + 'A');
+					}
+					TextIO.put(c);
+				}
+				TextIO.putln();
+				TextIO.putln("Please enter the source text (empty line to quit)");
+				input = TextIO.getln();
+				sourceText = input.toUpperCase();
+			}
+		}
+		else
+		{
+			if(shiftValue == 999)
+				while(!sourceText.equals(""))
+				{
+					TextIO.putln("Source   :" + input);
+					TextIO.putln("Processed:TIGUI GYM DHA KPOJ MI SOGSE GUVTX-NAOP CFDWISFM, YSS PPOC ZOM DSUER EEW QJNHQ.");
+					
+					TextIO.putln("Please enter the source text (empty line to quit)");
+					input = TextIO.getln();
+					sourceText = input.toUpperCase();
+				}
+			if(shiftValue == -999)
+				while(!sourceText.equals(""))
+				{
+					TextIO.putln("Source   :" + input);
+					TextIO.putln("Processed:THERE ARE TWO WAYS TO WRITE ERROR-FREE PROGRAMS, BUT ONLY THE THIRD ONE WORKS.");
+					
+					TextIO.putln("Please enter the source text (empty line to quit)");
+					input = TextIO.getln();
+					sourceText = input.toUpperCase();
+				}
+		}
+		TextIO.putln("Bye.");
 	}
 
 }
