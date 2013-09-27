@@ -1,7 +1,7 @@
 //UIUC CS125 FALL 2013 MP. File: MagicEightBall.java, CS125 Project: Challenge3-TopSecret, Version: 2013-09-21T12:24:57-0500.390883635
  /**
  * TODO: add your netid to the line below.
- * @author put-your-netid-here
+ * @author yangli15
  */
 public class MagicEightBall {
 
@@ -27,22 +27,14 @@ public class MagicEightBall {
 		TextIO.putln("Know mentor's innermost Java secrets?");
 		boolean social = TextIO.getlnBoolean();
 
-		// Use FOUR output statements - one for each output possibility.
-		// An example (incorrect) if-else structure is shown below.
-		// However, you should use the above rules to construct your own
-		// solution.
-		if (Math.random() < 0.0001 || ! social ) {
+		if (hours < 10 && !happy)
+			TextIO.put("Embarrassing Michigan Road Trip");
+		else if (social && happy && hours > 20) 
+			TextIO.put("Ace CS125 Exam");
+		else if (!happy && social && hours > 15)
 			TextIO.put("Rick Rolled Four Times in One Day");
-		} else {
-			if (Math.random() < 0.0001 || hours>0) {
-				TextIO.put("Delete Enter Keys Swapped");
-			} else if (Math.random() < 0.1) {
-				TextIO.put("Embarrassing Michigan Road Trip");
-			} else {
-				TextIO.put("Ace CS125 Exam");
-			}
-		}
-
+		else
+			TextIO.put("Delete Enter Keys Swapped");
 	}
 
 }
