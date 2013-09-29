@@ -60,26 +60,36 @@ public class CaesarCipher {
 		}
 		else
 		{
-			if(shiftValue == 999)
-				while(!sourceText.equals(""))
+			while(!sourceText.equals(""))
+			{
+				TextIO.putln("Source   :" + input);
+				TextIO.put("Processed:");
+				int index = 0;
+				
+				for(int i = 0; i < sourceText.length(); i++)
 				{
-					TextIO.putln("Source   :" + input);
-					TextIO.putln("Processed:TIGUI GYM DHA KPOJ MI SOGSE GUVTX-NAOP CFDWISFM, YSS PPOC ZOM DSUER EEW QJNHQ.");
+					char c = sourceText.charAt(i);
 					
-					TextIO.putln("Please enter the source text (empty line to quit)");
-					input = TextIO.getln();
-					sourceText = input.toUpperCase();
+					if(c >= 'A' && c <= 'Z')
+					{
+						int letter = c - 'A';
+						int encrypted;
+						if(shiftValue == 999)
+							encrypted = (letter + index) % 26;
+						else
+							encrypted = (letter - index) % 26;
+						if(encrypted < 0)
+							encrypted += 26;
+						c = (char)(encrypted + 'A');
+					}
+					TextIO.put(c);
+					index++;
 				}
-			if(shiftValue == -999)
-				while(!sourceText.equals(""))
-				{
-					TextIO.putln("Source   :" + input);
-					TextIO.putln("Processed:THERE ARE TWO WAYS TO WRITE ERROR-FREE PROGRAMS, BUT ONLY THE THIRD ONE WORKS.");
-					
-					TextIO.putln("Please enter the source text (empty line to quit)");
-					input = TextIO.getln();
-					sourceText = input.toUpperCase();
-				}
+				TextIO.putln();
+				TextIO.putln("Please enter the source text (empty line to quit)");
+				input = TextIO.getln();
+				sourceText = input.toUpperCase();
+			}
 		}
 		TextIO.putln("Bye.");
 	}
