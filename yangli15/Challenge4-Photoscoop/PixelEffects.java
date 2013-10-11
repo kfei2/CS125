@@ -172,6 +172,7 @@ public class PixelEffects {
 	}
 
 	/* randomly selects source or sourceB for each array value and puts it in the new array */
+	//as this is spammed more, you should see stars in a universe...which looks nice :D
 	public static int[][] funky(int[][] source, int[][] sourceB) {
 		int[][] background = resize(sourceB, source);
 		int[][] newArray = new int[source.length][source[0].length];
