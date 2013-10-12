@@ -16,7 +16,7 @@ public class PixelEffects {
 		for(int i = 0; i < source.length; i++)
 			for(int j = 0; j < source[0].length;j++)
 				newArray[i][j] = source[i][j];
-		// See redeye code below
+		
 		return newArray;
 	}
 
