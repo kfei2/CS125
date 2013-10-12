@@ -34,15 +34,13 @@ public class PixelEffects {
 		int[][] tgt = new int[newWidth][newHeight];
 		int srcW = source.length;
 		int srcH = source[0].length;
-		int tgtW = newWidth;
-		int tgtH = newHeight;
 		
-		for(int tgtX = 0; tgtX < tgtW; tgtX++)
+		for(int tgtX = 0; tgtX < newWidth; tgtX++)
 		{
-			for(int tgtY = 0; tgtY < tgtH; tgtY++)
+			for(int tgtY = 0; tgtY < newHeight; tgtY++)
 			{
-				int srcY = (int)(((double)tgtY/(double)tgtH)*srcH);
-				int srcX = (int)(((double)tgtX/(double)tgtW)*srcW);
+				int srcY = (int)(((double)tgtY/(double)newHeight)*srcH);
+				int srcX = (int)(((double)tgtX/(double)newWidth)*srcW);
 				tgt[tgtX][tgtY] = source[srcX][srcY];
 			}
 		}
