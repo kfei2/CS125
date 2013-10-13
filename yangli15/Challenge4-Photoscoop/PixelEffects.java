@@ -108,7 +108,6 @@ public class PixelEffects {
 		return tgt;
 	}
 
-	//TODO
 	/** Merge the red,blue,green components from two images */
 	public static int[][] merge(int[][] sourceA, int[][] sourceB) {
 		int[][] background = resize(sourceB, sourceA);
@@ -121,14 +120,9 @@ public class PixelEffects {
 				int blue = (RGBUtilities.toBlue(sourceA[i][j]) + RGBUtilities.toBlue(background[i][j])) / 2;
 				merged[i][j] = RGBUtilities.toRGB(red, green, blue);
 			}
-		// The output should be the same size as the input. Scale (x,y) values
-		// when reading the background
-		// (e.g. so the far right pixel of the source is merged with the
-		// far-right pixel ofthe background).
 		return merged;
 	}
 
-	// TODO
 	/**
 	 * Replace the green areas of the foreground image with parts of the back
 	 * image
