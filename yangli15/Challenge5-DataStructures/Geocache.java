@@ -26,4 +26,70 @@
  * 
  */
 class Geocache {
+	private double x, y;
+	private int id;
+	static int count;
+	
+	public Geocache(double xValue, double yValue)
+	{
+		x = xValue;
+		y = yValue;
+		id = count;
+		count++;
+	}
+	
+	public Geocache(Geocache cache)
+	{
+		this.x = cache.getX();
+		this.y = cache.getY();
+		id = count;
+		count++;
+	}
+	
+	public static void resetCount()
+	{
+		count = 0;
+	}
+	
+	public static int getNumGeocachesCreated()
+	{
+		return count;
+	}
+	
+	public boolean equals(Object obj)
+	{
+		if(obj instanceof Geocache)
+			return this.x == ((Geocache)obj).getX() && this.y == ((Geocache)obj).getY() && this.id == ((Geocache)obj).getId();
+		return false;
+	}
+	
+	public String toString(Geocache cache)
+	{
+		return "(" + cache.getX() + "," + cache.getY() + ")";
+	}
+	public double getX()
+	{
+		return x;
+	}
+	
+	public double getY()
+	{
+		return y;
+	}
+	
+	public void setX(double xValue)
+	{
+		if(Math.abs(xValue) < 1000)
+			x = xValue;
+	}
+	
+	public void setY(double yValue)
+	{
+		y = yValue;
+	}
+	
+	public int getId()
+	{
+		return id;
+	}
 }
