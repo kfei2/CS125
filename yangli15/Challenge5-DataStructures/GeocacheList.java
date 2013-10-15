@@ -6,27 +6,39 @@
  * Hint: Get the Geocache class working and passing its tests first.
  */
 public class GeocacheList {
-	private Geocache[] data = new Geocache[0];
-	private int size = 0;
+	private Geocache[] data;
+	private int size;
 
 	public Geocache getGeocache(int i) {
-		return null;
+		return data[i];
 	}
 
 	public int getSize() {
-		return 0;
+		return size;
 	}
 
 	public GeocacheList() {
+		data = new Geocache[0];
+		size = 0;
 	}
 
 	public GeocacheList(GeocacheList other, boolean deepCopy) {
 		data = new Geocache[other.data.length];
-		size = other.size;
-		
+		size = other.getSize();
+		if(!deepCopy)
+		{
+			for(int i = 0; i < other.getSize(); i++)
+				data[i] = other.data[i];
+		}
+		else
+			for(int i = 0; i < data.length; i++)
+			{
+				data[i] = new Geocache(other.data[i]);
+			}
 	}
 
 	public void add(Geocache p) {
+		
 		size++;
 		if (size > data.length) {
 			Geocache[] old = data;
@@ -38,6 +50,16 @@ public class GeocacheList {
 	}
 
 	public Geocache removeFromTop() {
+		if(size > 0)
+		{
+			size--;
+			Geocache first = data[0];
+			Geocache[] newList = new Geocache[data.length-1];
+			for(int i = 0; i < newList.length; i++)
+				newList[i] = data[i+1];
+			data = newList;
+			return first;
+		}
 		return null;
 	}
 
