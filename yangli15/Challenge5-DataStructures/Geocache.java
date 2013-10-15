@@ -28,7 +28,7 @@
 class Geocache {
 	private double x, y;
 	private int id;
-	static int count;
+	private static int count;
 	
 	public Geocache(double xValue, double yValue)
 	{
@@ -40,8 +40,8 @@ class Geocache {
 	
 	public Geocache(Geocache cache)
 	{
-		this.x = cache.getX();
-		this.y = cache.getY();
+		x = cache.getX();
+		y = cache.getY();
 		id = count;
 		count++;
 	}
@@ -59,13 +59,13 @@ class Geocache {
 	public boolean equals(Object obj)
 	{
 		if(obj instanceof Geocache)
-			return this.x == ((Geocache)obj).getX() && this.y == ((Geocache)obj).getY() && this.id == ((Geocache)obj).getId();
+			return x == ((Geocache)obj).x && y == ((Geocache)obj).y;
 		return false;
 	}
 	
-	public String toString(Geocache cache)
+	public String toString()
 	{
-		return "(" + cache.getX() + "," + cache.getY() + ")";
+		return "(" + x + "," + y + ")";
 	}
 	public double getX()
 	{
