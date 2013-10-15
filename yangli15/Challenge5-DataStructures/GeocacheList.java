@@ -4,6 +4,7 @@
  * There are several errors in the code below
  *
  * Hint: Get the Geocache class working and passing its tests first.
+ * @author yangli15
  */
 public class GeocacheList {
 	private Geocache[] data;
