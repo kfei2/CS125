@@ -11,7 +11,7 @@ public class KeyValueMap { // aka Dictionary or Map
 	 * entry.
 	 */
 	public void add(String key, Color value) {
-		boolean found = false;;
+		boolean found = false;
 		for(int i = 0; i < keys.length; i++)
 			if(keys[i].equals(key))
 			{
