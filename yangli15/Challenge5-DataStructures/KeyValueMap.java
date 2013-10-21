@@ -1,7 +1,5 @@
 //UIUC CS125 FALL 2013 MP. File: KeyValueMap.java, CS125 Project: Challenge5-DataStructures, Version: 2013-10-14T16:24:13-0500.541025911
 //@author yangli15
-//yangli15
-//
 import java.awt.Color;
 
 public class KeyValueMap { // aka Dictionary or Map
