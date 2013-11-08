@@ -1,14 +1,14 @@
 //UIUC CS125 FALL 2013 MP. File: LinkedList.java, CS125 Project: Challenge6-RecursionSee, Version: 2013-11-05T17:51:57-0600.490903127
 /**
- * @author replace-with-your-netid-here
+ * @author yangli15
  *
  */
 public class LinkedList {
 	// Get and Set methods are NOT necessary!
 
-	private LinkedList next; 	
+	private LinkedList next;
 	private final String word;
-
+	
 	/** Constructs this link.
 	 * @param word ; a single word (never null).
 	 * @param next ; the next item in the chain (null, if there are no more items).
@@ -37,9 +37,9 @@ public class LinkedList {
 	public int getCount() {
 		if (next == null)
 			return 1; // BASE CASE; no more recursion required!
-
 		// Recursive case:
-		return 1 + next.getCount(); // Forward recursion
+		else
+			return 1 + next.getCount(); // Forward recursion
 	}
 	
 	/** Creates a new LinkedList entry at the end of this linked list.
@@ -47,8 +47,10 @@ public class LinkedList {
 	 * @param word
 	 */
 	public void append(String word) {
-		throw new IllegalArgumentException("Not Yet Implemented");
-
+		if(next == null)
+			this.next = new LinkedList(word, null);
+		else
+			next.append(word);
 	}
 	/**
 	 * Recursively counts the total number of letters used.
@@ -56,7 +58,10 @@ public class LinkedList {
 	 * @return total number of letters in the words of the linked list
 	 */
 	public int getLetterCount() {
-		throw new IllegalArgumentException("Not Yet Implemented");
+		if(next == null)
+			return word.length();
+		else
+			return word.length() + next.getLetterCount();
 		// returns the total number of letters. word1.length() +
 		// word2.length()+...
 		// "A" -> "CAT" -> null returns 1 + 3 = 4.
@@ -68,7 +73,12 @@ public class LinkedList {
 	 */
 	public String getLongestWord() {
 		// recursive searches for the longest word
-		throw new IllegalArgumentException("Not Yet Implemented");
+		if(next == null)
+			return word;
+		if(this.word.length() > next.getLongestWord().length())
+			return this.word;
+		else
+			return next.getLongestWord();
 	}
 
 	/** Converts linked list into a sentence (a single string representation).
@@ -76,7 +86,10 @@ public class LinkedList {
 	* A period (".") is appended after the last word.
 	* The last link represents the last word in the sentence.*/
 	public String getSentence() {
-		throw new IllegalArgumentException("Not Yet Implemented");
+		if(next == null)
+			return this.word + ".";
+		else
+			return word + " " + next.getSentence();
 	}
 	
 	/**
@@ -87,17 +100,25 @@ public class LinkedList {
 	 * from earlier links. This partialResult is initially an empty string. 
 	 */
 	public String getReversedSentence(String partialResult) {
-		throw new IllegalArgumentException("Not Yet Implemented");
+		if(next == null)
+			return word + partialResult + ".";
+		else
+			return next.getReversedSentence(" " + word + partialResult);
 	}
 	
 
 	/** Creates a linked list of words from an array of strings.
 	 * Each string in the array is a word. */
 	public static LinkedList createLinkedList(String[] words) {
-		throw new IllegalArgumentException("Not Yet Implemented");
-		// Hint: This is a wrapper method. You'll need to create your
-		// own recursive method.
-		// Yes this is possible _without_ loops!
+		if(words.length == 0)
+			return null;
+		else
+		{
+			String[] newWords = new String[words.length-1];
+			for(int i = 1; i < words.length; i++)
+				newWords[i-1] = words[i];
+			return new LinkedList(words[0], createLinkedList(newWords));
+		}
 	}
 
 	/**
@@ -108,7 +129,10 @@ public class LinkedList {
 	 * @return true if the linked list contains the word (case sensivitive)
 	 */
 	public boolean contains(String word) {
-		throw new IllegalArgumentException("Not Yet Implemented");
+		if(next == null)
+			return this.word.equals(word);
+		else
+			return this.word.equals(word) || next.contains(word);
 	}
 
 	/** Recursively searches for the given word in the linked list.
@@ -119,8 +143,12 @@ public class LinkedList {
 	 * @return The link that contains the search word.
 	 */
 	public LinkedList find(String word) {
-		throw new IllegalArgumentException("Not Yet Implemented");
-
+		if(!this.word.equals(word) && next == null)
+			return null;
+		if(this.word.equals(word))
+			return this;
+		else
+			return next.find(word);
 	}
 
 	/**
@@ -131,11 +159,33 @@ public class LinkedList {
 	 * @return the last LinkedList object that represents the given word, or null if it is not found.
 	 */
 	public LinkedList findLast(String word) {
-		throw new IllegalArgumentException("Not Yet Implemented");
+		if(next == null)
+		{
+			if(this.word.equals(word))
+				return this;
+			else
+				return null;
+		}
+		
+		LinkedList result =next.findLast(word);
+		if(result != null)
+			return result;
+		if(this.word.equals(word))
+			result = this;
+		return result;
+			
 	}
 
 	public LinkedList insert(String string) {
-		throw new IllegalArgumentException("Not Yet Implemented");
+		if(string.compareTo(this.word) < 0)
+			return new LinkedList(string, this);
+		if(next == null)
+		{
+			this.next = new LinkedList(string, null);
+			return this;
+		}
+		this.next = next.insert(string);
+		return this;
 	}
 
 }
