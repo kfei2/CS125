@@ -67,11 +67,11 @@ public class Person
 			count += child2.count();
 		return count;
 	}
+	
 	public int countGrandChildren() // but not greatGrandChildren
 	{
 		return countChildren(2);
 	}
-	
 	
 	public int countChildren(int generations)
 	{
@@ -86,9 +86,9 @@ public class Person
 		}
 		if(child1 == null && child2 == null)
 			return 0;
-		if(child1 == null)
+		else if(child1 == null)
 			return child2.countChildren(generations-1);
-		if(child2 == null)
+		else if(child2 == null)
 			return child1.countChildren(generations-1);
 		return child1.countChildren(generations-1) + child2.countChildren(generations-1);
 	}
