@@ -49,7 +49,9 @@ You need to figure out the base case.
 			int score4 = 0;
 			if(gene1[i-1] == gene2[j-1])
 				score4 = score(gene1, gene2, i-1, j-1)+ 1;
-			return Math.max(Math.max(score1, score2), Math.max(score3,  score4));
+			int max1 = Math.max(score1, score2);
+			int max2 = Math.max(score3,  score4);
+			return Math.max(max1, max2);
 		}
 		/*
 		int score = 0;
