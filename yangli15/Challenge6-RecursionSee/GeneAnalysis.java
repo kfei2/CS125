@@ -53,16 +53,6 @@ You need to figure out the base case.
 			int max2 = Math.max(score3,  score4);
 			return Math.max(max1, max2);
 		}
-		/*
-		int score = 0;
-		if(i >= 0 && j >= 0 && gene1[i] == gene2[j])
-			score++;
-		if(i > 0)
-			score += score(gene1, gene2, i-1, j);
-		if(j > 0)
-			score += score(gene1, gene2, i, j-1);
-		return score;
-		*/
 	}
 
 }
