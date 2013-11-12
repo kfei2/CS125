@@ -1,5 +1,5 @@
 //UIUC CS125 FALL 2013 MP. File: GridCounting.java, CS125 Project: Challenge7-RecursiveKnight, Version: 2013-11-12T11:50:16-0600.415914391
-
+//@yangli15
 public class GridCounting {
 	/** Returns the total number of possible routes (paths) from
 	 * (x,y) to (tx,ty).
@@ -11,6 +11,10 @@ public class GridCounting {
 	 *  Hint: You'll need to test two base cases.
 	 */
 	public static int count(int x,int y, int tx, int ty) {
-		return 57;
+		if(x == tx && y == ty)
+			return 1;
+		if(x > tx || y > ty)
+			return 0;
+		return count(x+1,y,tx,ty) + count(x+2,y,tx,ty)+count(x,y+1,tx,ty);
 	}
 }
