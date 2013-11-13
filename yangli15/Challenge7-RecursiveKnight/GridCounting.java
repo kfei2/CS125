@@ -1,5 +1,6 @@
 //UIUC CS125 FALL 2013 MP. File: GridCounting.java, CS125 Project: Challenge7-RecursiveKnight, Version: 2013-11-12T11:50:16-0600.415914391
-//@yangli15
+
+//@author yangli15
 public class GridCounting {
 	/** Returns the total number of possible routes (paths) from
 	 * (x,y) to (tx,ty).
