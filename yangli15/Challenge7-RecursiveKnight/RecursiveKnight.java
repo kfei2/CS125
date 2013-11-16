@@ -1,4 +1,5 @@
 //UIUC CS125 FALL 2013 MP. File: RecursiveKnight.java, CS125 Project: Challenge7-RecursiveKnight, Version: 2013-11-12T11:50:16-0600.415914391
+//@author yangli15
 public class RecursiveKnight {
 
 	/**
@@ -28,6 +29,25 @@ public class RecursiveKnight {
 	 * Assume visited and steps are already initialized to a square array and are the same size.
 	 */
 	public static void explore(boolean[][] visited, int x, int y, int[][] steps, int step) {
-	//Todo: Implement RecursiveKnight.explore
-		throw new RuntimeException("Not yet Implemented!"); // you can remove this line!
+		if(x >= visited.length || y >= visited[0].length || x < 0 || y < 0)
+			return;
+		else if(visited[x][y] && step > 0)
+			return;
+		else if(steps[x][y] > 0 && steps[x][y] < step)
+			return;
+		else
+		{
+			if(step < steps[x][y] || steps[x][y] <= 0)
+				steps[x][y] = step;
+			visited[x][y] = true;
+			explore(visited, x+1, y+2, steps,step+1);
+			explore(visited, x+1, y-2, steps,step+1);
+			explore(visited, x+2, y+1, steps,step+1);
+			explore(visited, x+2, y-1, steps,step+1);
+			explore(visited, x-1, y+2, steps,step+1);
+			explore(visited, x-1, y-2, steps,step+1);
+			explore(visited, x-2, y+1, steps,step+1);
+			explore(visited, x-2, y-1, steps,step+1);
+			visited[x][y] = false;
+		}
 }	}
