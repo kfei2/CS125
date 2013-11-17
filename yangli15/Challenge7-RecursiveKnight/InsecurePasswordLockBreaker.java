@@ -1,8 +1,23 @@
 //UIUC CS125 FALL 2013 MP. File: InsecurePasswordLockBreaker.java, CS125 Project: Challenge7-RecursiveKnight, Version: 2013-11-12T11:50:16-0600.415914391
+//@author yangli15
 public class InsecurePasswordLockBreaker {
 
 	public static char[] breakLock(InsecurePasswordLock lock) {
 		char[] key = new char[1];
+		
+		int length = 1;
+		while(lock.open(key) == -1)
+		{
+			length++;
+			key = new char[length];
+		}
+		
+		for(int i = 0; i < key.length;i++)
+		{
+			key[i] = 'A';
+			while(lock.open(key) == i)
+				key[i] += 1;
+		}
 		// write code here to determine the secret password
 		// to unlock the given lock object.
 		// You do not need to use recursion.
