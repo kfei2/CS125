@@ -87,13 +87,13 @@ public class RobotLink {
 	 */
 	public Robot getFirstFlyingUnhappyRobot() {
 		if(next == null)
-			if(!this.robot.isHappy())
+			if(!this.robot.isHappy() && this.robot.isFlying())
 				return this.robot;
 			else
 				return null;
 		else
 		{
-			if(!this.robot.isHappy())
+			if(!this.robot.isHappy() && this.robot.isFlying())
 				return this.robot;
 			else
 				return next.getFirstFlyingUnhappyRobot();
