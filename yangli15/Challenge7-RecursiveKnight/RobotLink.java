@@ -133,7 +133,7 @@ public class RobotLink {
 		else
 		{
 			double distance = robot.getDistanceFromHome();
-				if(distance > next.robot.getDistanceFromHome())
+				if(distance > next.findHappyRobotFurthestFromHome().getDistanceFromHome())
 					return this.robot;
 				else
 					return next.findHappyRobotFurthestFromHome();
