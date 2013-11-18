@@ -62,7 +62,7 @@ public class RobotLink {
 		}
 		else
 		{
-			if(!this.getRobot().isHappy())
+			if(!robot.isHappy())
 				return 0;
 			if(robot.isFlying())
 				return 1 + next.countFlyingRobotsBeforeSadRobot();
